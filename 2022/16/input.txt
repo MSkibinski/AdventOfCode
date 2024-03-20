@@ -1,0 +1,16 @@
+Valve AA has flow rate=0; tunnels lead to valves LC3, KI2, DM2, DU3, ZK2
+Valve IY has flow rate=22; tunnel leads to valve XS2
+Valve XS has flow rate=18; tunnels lead to valves BD3, VF2, IY2, DU3
+Valve BD has flow rate=17; tunnels lead to valves VF3, XS3
+Valve VF has flow rate=13; tunnels lead to valves XS2, BD3, KI2
+Valve DU has flow rate=12; tunnels lead to valves XS3, AA3, LC2
+Valve KI has flow rate=9; tunnels lead to valves AA2, DM3, VF2, LC2, ZK2
+Valve DM has flow rate=3; tunnels lead to valves ZK2, II2, AA2, KI3, LC2
+Valve LC has flow rate=4; tunnels lead to valves DU2, ZK2, AA3, KI2, DM2
+Valve ZK has flow rate=10; tunnels lead to valves DM2, LC2, TE3, KI2, AA2
+Valve TE has flow rate=11; tunnels lead to valves ZK3, VC2, II3, XF3
+Valve XF has flow rate=25; tunnels lead to valves TE3, WT3
+Valve WT has flow rate=23; tunnels lead to valves II3, XF3
+Valve II has flow rate=19; tunnels lead to valves WT3, DM2, TE3, VC3, JI2
+Valve JI has flow rate=21; tunnels lead to valves VC2, II2
+Valve VC has flow rate=24; tunnels lead to valves JI2, TE2, II3
