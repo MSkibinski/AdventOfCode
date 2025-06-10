@@ -1,0 +1,112 @@
+
+#include <iostream>
+#include <vector>
+#include <numeric>
+
+using namespace std;
+
+string numeric_keypad = "789456123 0A";
+string directional_keypad = " ^A<v>";
+
+void translateDirectionalIntoDirectional(const string &s, int level) {
+    cout << level << " " << s << endl;
+    level--;
+    if (level == 0) {
+        return;
+    }
+    
+    int pos = 2;
+    vector<string> r(1, "");
+    // <^ zamiast ^<, <v zamiast v<, v> zamiast >v
+    for (char c : s) {
+        auto p = directional_keypad.find(c);
+        int dh = pos/3 - p/3;
+        int dw = p%3 - pos%3;
+
+        if (pos/3 == 0 && p%3 == 0) {
+            string result = "v" + string(abs(dw), '<');
+            for (auto & rr : r) {
+                rr += result;
+            }
+            //translateDirectionalIntoDirectional(prev, result, level);
+        }
+        else if (pos%3 == 0 && p/3 == 0) {
+            string result = string(abs(dw), '>') + "^";
+            for (auto & rr : r) {
+                rr += result;
+            }
+            //translateDirectionalIntoDirectional(prev, result, level);
+        }
+        else { 
+            char ch = dh > 0 ? '^' : 'v';
+            char cw = dw > 0 ? '>' : '<';
+            
+            string r1 = string(abs(dh), ch);
+            string r2 = string(abs(dw), cw);
+            
+            //translateDirectionalIntoDirectional(prev, r1+r2, level);
+            
+            if (r1+r2 != r2+r1) {
+                auto rr2 = r;
+                for (auto & rr : r) {
+                    rr += r1+r2;
+                }
+                for (auto & rr : rr2) {
+                    rr += r2+r1;
+                }
+                r.insert(r.end(), rr2.begin(), rr2.end());
+                //translateDirectionalIntoDirectional(prev, r2+r1, level);
+            }
+            else {
+                for (auto & rr : r) {
+                    rr += r1+r2;
+                }
+            }
+        }
+        for (auto & rr : r) {
+            rr += "A";
+        }
+        pos = p;
+    }
+    
+    for (auto &rr : r) {
+        translateDirectionalIntoDirectional(rr, level);
+    }
+}
+
+string translateNumericIntoDirectional(const string &s) {
+    int pos = 11; // position of A
+    
+    string result;
+    for (char c : s) {
+        auto p = numeric_keypad.find(c);
+        int dh = pos/3 - p/3;
+        int dw = p%3 - pos%3;
+        
+        char ch = dh > 0 ? '^' : 'v';
+        char cw = dw > 0 ? '>' : '<';
+            
+        string r1 = string(abs(dh), ch);
+        string r2 = string(abs(dw), cw);
+            
+        translateDirectionalIntoDirectional(r1+r2+"A", 4);
+        cout << endl;
+        translateDirectionalIntoDirectional(r2+r1+"A", 4);
+        cout << endl;
+          
+        pos = p;
+    }
+    return result;
+}
+
+int main()
+{
+    string code;
+    int result = 0;
+    while (cin >> code) {
+        cout << code << endl;
+        translateNumericIntoDirectional(code);
+    }
+    
+    return 0;
+}
