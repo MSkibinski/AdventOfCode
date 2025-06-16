@@ -1,0 +1,5 @@
+add_executable(2022_01 day1/main.cpp day1/Solution.cpp)
+
+#target_include_directories(2022_01 PUBLIC ../utility)
+
+file(COPY day1/input.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/day1)
