@@ -2,6 +2,7 @@ add_executable(2022_01 day1/main.cpp day1/Solution.cpp)
 add_executable(2022_02 day2/main.cpp day2/Solution.cpp)
 add_executable(2022_03 day3/main.cpp day3/Solution.cpp)
 add_executable(2022_04 day4/main.cpp day4/Solution.cpp)
+add_executable(2022_05 day5/main.cpp day5/Solution.cpp)
 
 #target_include_directories(2022_01 PUBLIC ../utility)
 
@@ -9,3 +10,4 @@ file(COPY day1/input.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/day1)
 file(COPY day2/input.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/day2)
 file(COPY day3/input.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/day3)
 file(COPY day4/input.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/day4)
+file(COPY day5/input.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/day5)
